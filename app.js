@@ -288,7 +288,8 @@
     return section;
   }
 
-  function makeSample(sample, index) {
+  function makeSample(sample, index, defaultCheckpoint) {
+    const checkpoint = sample.checkpoint || defaultCheckpoint;
     const section = element("section", "sample");
     section.id = sampleAnchor(sample.id);
     section.setAttribute("aria-labelledby", `${sample.id}-heading`);
@@ -308,7 +309,7 @@
     section.append(header);
     const cleanAvailable = sample.references.some((track) => track.kind === "clean");
     section.append(makeGroup("Source audio", cleanAvailable ? "Input and clean reference" : "No clean reference is available", sample.references, sample, "references"));
-    section.append(makeGroup("Our restored outputs", "Same checkpoint · same starting noise", sample.outputs, sample, "outputs"));
+    section.append(makeGroup("Our restored outputs", `${checkpoint.step.toLocaleString("en-US")} updates · ${checkpoint.weights} · same starting noise`, sample.outputs, sample, "outputs"));
     if (sample.source_note) {
       const note = element("p", "source-note", sample.source_note);
       if (sample.source_url) {
@@ -344,8 +345,9 @@
       if (!response.ok) throw new Error(`Manifest returned ${response.status}`);
       const data = await response.json();
       validateManifest(data);
-      const stepLabel = data.checkpoint.step.toLocaleString("en-US");
-      document.querySelector(".section-helper").textContent = `${stepLabel}-update checkpoint · Click a spectrogram to play or pause. Use the slider to seek.`;
+      const checkpoints = [...new Map(data.samples.map(sample => { const c = sample.checkpoint || data.checkpoint; return [c.sha256, c]; })).values()];
+      const stepLabel = checkpoints.map(c => c.step.toLocaleString("en-US")).join(" / ");
+      document.querySelector(".section-helper").textContent = `${stepLabel}-update checkpoints · Labeled per example. Click a spectrogram to play or pause. Use the slider to seek.`;
       const spectrum = data.spectrogram;
       const gainDb = data.playback?.common_gain_db;
       const gainLabel = Number.isFinite(gainDb)
@@ -359,7 +361,7 @@
       const conditioning = data.checkpoint.conditioning_architecture === "scm-positional-adn-v1"
         ? "Positional time embeddings and adaptive double normalization"
         : data.checkpoint.conditioning_architecture || `Gaussian Fourier frequency width ${data.checkpoint.frequency_width}`;
-      checkpointDetails.replaceChildren(document.createTextNode(`${stepLabel} optimizer updates · ${data.checkpoint.weights} weights · ${conditioning}. Checkpoint SHA-256: `), element("code", "", data.checkpoint.sha256));
+      checkpointDetails.replaceChildren(...checkpoints.flatMap(c => [document.createTextNode(`${c.step.toLocaleString("en-US")} updates · ${c.weights} · ${conditioning}. SHA-256: `), element("code", "", c.sha256), document.createElement("br")]));
       const samples = document.getElementById("samples");
       const nav = document.getElementById("sample-navigation");
       stopPlayback();
@@ -367,7 +369,7 @@
       samples.replaceChildren();
       nav.replaceChildren();
       data.samples.forEach((sample, index) => {
-        samples.append(makeSample(sample, index));
+        samples.append(makeSample(sample, index, data.checkpoint));
         const link = element("a");
         link.href = `#${sampleAnchor(sample.id)}`;
         link.setAttribute("aria-label", `Jump to ${sample.title}`);
@@ -376,6 +378,7 @@
       });
       window.RMFSRPlaybackMode.initialize(data, players, stopPlayback);
       status.hidden = true;
+      if (window.location.hash) document.getElementById(window.location.hash.slice(1))?.scrollIntoView();
     } catch (error) {
       status.classList.add("error");
       status.textContent = "The audio examples could not load. Check your connection and try again.";

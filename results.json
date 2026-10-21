@@ -1034,6 +1034,162 @@
         "common_safety_gain_db": 0.0,
         "maximum_rms_spread_db": 0.0023738550015153237
       }
+    },
+    {
+      "id": "sample-crackling",
+      "title": "Severe crackling · 30k EMA",
+      "description": "Synthetic crackles 10 dB above speech (−10 dB SNR). Clean reference included.",
+      "duration_seconds": 4,
+      "checkpoint": {
+        "step": 30000,
+        "weights": "EMA",
+        "sha256": "d94b285830fd477b52fb8afdf36c0390669a339eb4e6523e83cec72ad21f3a55",
+        "conditioning_architecture": "TEMF 325M · Nat · normalized positional time"
+      },
+      "references": [
+        {
+          "audio": "assets/audio/sample-crackling/input.wav?v=4d9d6e88a56e4db7",
+          "spectrogram": "assets/spectrograms/sample-crackling/input.png?v=00728c0c1cae866b",
+          "audio_sha256": "4d9d6e88a56e4db7020cae61db99b5216760d07761f11ebdcb119b0601f7f98d",
+          "spectrogram_sha256": "00728c0c1cae866b4f52b4dfb0ea38b34e4a9883d9f01336c7d229bb6e9f71ab",
+          "source_sha256": "6d239e93cf44035e0d4701a2ac444c549c3d867c60be654c5acc97a1f9d9fad9",
+          "stoi": 0.538942752544156,
+          "kind": "input",
+          "label": "Damaged input · STOI 0.539",
+          "matched": {
+            "audio": "assets/audio/sample-crackling/input-rms-matched.wav?v=4d9d6e88a56e4db7",
+            "spectrogram": "assets/spectrograms/sample-crackling/input-rms-matched.png?v=00728c0c1cae866b",
+            "audio_sha256": "4d9d6e88a56e4db7020cae61db99b5216760d07761f11ebdcb119b0601f7f98d",
+            "spectrogram_sha256": "00728c0c1cae866b4f52b4dfb0ea38b34e4a9883d9f01336c7d229bb6e9f71ab",
+            "gain_db": 0.0,
+            "source_rms_dbfs": -26.741560741275343,
+            "rms_dbfs": -26.741560741275343,
+            "rms": 0.04601738788975491,
+            "peak": 0.72705078125
+          }
+        },
+        {
+          "audio": "assets/audio/sample-crackling/clean.wav?v=d6e14ea47cf64bb2",
+          "spectrogram": "assets/spectrograms/sample-crackling/clean.png?v=9be1762c97729fc9",
+          "audio_sha256": "d6e14ea47cf64bb26d8ad922c150ce6ed62e0b3c4c8feb9d5c3e90d11bab220c",
+          "spectrogram_sha256": "9be1762c97729fc969bf702e65e623bcb91cc5d4b884ec6a1ce6004d8d55f52d",
+          "source_sha256": "39c7ef9a428512813131425c0d7f07686ededd0ffa7e8cd57efd05da7ee8b4ad",
+          "stoi": 0.9999999999999991,
+          "kind": "clean",
+          "label": "Clean reference · STOI 1.000",
+          "matched": {
+            "audio": "assets/audio/sample-crackling/clean-rms-matched.wav?v=409b0c5a93abf71a",
+            "spectrogram": "assets/spectrograms/sample-crackling/clean-rms-matched.png?v=df903fce65ad4a37",
+            "audio_sha256": "409b0c5a93abf71a7d6485aebcc6a66c7563dfd88125cfcddac8b35fbcf5a418",
+            "spectrogram_sha256": "df903fce65ad4a3725f2d51d5d572be364daa6f795e36a01ed60572a55bcbc1d",
+            "gain_db": 10.417819735873213,
+            "source_rms_dbfs": -37.15942986751211,
+            "rms_dbfs": -26.741571643658943,
+            "rms": 0.046017330129534476,
+            "peak": 0.381439208984375
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "audio": "assets/audio/sample-crackling/nfe1.wav?v=e766bc16ccb93fd4",
+          "spectrogram": "assets/spectrograms/sample-crackling/nfe1.png?v=b6e33fc297564fc4",
+          "audio_sha256": "e766bc16ccb93fd427b65b5dbd76a17727be1ab76a29f6c2011637554694be83",
+          "spectrogram_sha256": "b6e33fc297564fc4c91ee379b7da7dd6be5fde2d8e44638624b634f3f477bcd9",
+          "source_sha256": "ec3e550d5912ad48e8c5f77da925d7f662bdd33c25ee04fe29447658f177403e",
+          "stoi": 0.6165776536458273,
+          "nfe": 1,
+          "label": "NFE 1 · STOI 0.617",
+          "matched": {
+            "audio": "assets/audio/sample-crackling/nfe1-rms-matched.wav?v=db5464f2674f346c",
+            "spectrogram": "assets/spectrograms/sample-crackling/nfe1-rms-matched.png?v=808f9f7343e36aa4",
+            "audio_sha256": "db5464f2674f346ca23d10ca09683ff4b4d5761e41799456f88267fb5bb0d5dd",
+            "spectrogram_sha256": "808f9f7343e36aa4cb71c9642b92434c8bc4b23b92814afae4dd443958b6e673",
+            "gain_db": 11.699446081378234,
+            "source_rms_dbfs": -38.441511560293186,
+            "rms_dbfs": -26.74168234211494,
+            "rms": 0.046016743659391984,
+            "peak": 0.643768310546875
+          }
+        },
+        {
+          "audio": "assets/audio/sample-crackling/nfe5.wav?v=cdc5ffb08b1be3ee",
+          "spectrogram": "assets/spectrograms/sample-crackling/nfe5.png?v=f95eba8e0c9898cd",
+          "audio_sha256": "cdc5ffb08b1be3ee69c948ea76eab801f263579141edf3acc8019a71bc5c4d1c",
+          "spectrogram_sha256": "f95eba8e0c9898cd8b4607b10a7104bdc27017a7e4552735e9fb7013c5808ff4",
+          "source_sha256": "1d94cb83137a9edfcb4902a32bbc88d8203ac900ade585dc7a8b0591a4cd786b",
+          "stoi": 0.6902281794442346,
+          "nfe": 5,
+          "label": "NFE 5 · STOI 0.690",
+          "matched": {
+            "audio": "assets/audio/sample-crackling/nfe5-rms-matched.wav?v=6b2b194fbe19ed20",
+            "spectrogram": "assets/spectrograms/sample-crackling/nfe5-rms-matched.png?v=ac763fe3419d7e27",
+            "audio_sha256": "6b2b194fbe19ed209ef6c408129d9c0b840116c1e12147f44a25128e2743aa91",
+            "spectrogram_sha256": "ac763fe3419d7e2751c2ed1951d1ffc86d4bcf99c465fe589a6db82d9de49699",
+            "gain_db": 13.44198961105315,
+            "source_rms_dbfs": -40.18422901009495,
+            "rms_dbfs": -26.741694682892685,
+            "rms": 0.0460166782795603,
+            "peak": 0.393524169921875
+          }
+        },
+        {
+          "audio": "assets/audio/sample-crackling/nfe20.wav?v=5f8b3f02881243eb",
+          "spectrogram": "assets/spectrograms/sample-crackling/nfe20.png?v=18b41abd9af7cbae",
+          "audio_sha256": "5f8b3f02881243eb127c788b592dcbb400d081ae6a4480647102323a4318ef72",
+          "spectrogram_sha256": "18b41abd9af7cbae825db8c444cf9a3eaee6000a00cbc8fce7f8efe0cdc12d52",
+          "source_sha256": "06785d02ce927d5904fc30622cb85a08cf5941b61b6813f41ee26b98c3d88ded",
+          "stoi": 0.6899685686532097,
+          "nfe": 20,
+          "label": "NFE 20 · STOI 0.690",
+          "matched": {
+            "audio": "assets/audio/sample-crackling/nfe20-rms-matched.wav?v=a87008b43f08910f",
+            "spectrogram": "assets/spectrograms/sample-crackling/nfe20-rms-matched.png?v=25fbfbb3222ed0be",
+            "audio_sha256": "a87008b43f08910f21b44f8aaf64ab771a484488806a9bf0582badb25ac7b514",
+            "spectrogram_sha256": "25fbfbb3222ed0beaa160263eb554ad3940d03085bc1611e8f8bd1e39e063e2b",
+            "gain_db": 12.440449332578465,
+            "source_rms_dbfs": -39.18270471526222,
+            "rms_dbfs": -26.741734188217503,
+            "rms": 0.04601646898612416,
+            "peak": 0.44744873046875
+          }
+        },
+        {
+          "audio": "assets/audio/sample-crackling/nfe100.wav?v=b28a1b839b2344b7",
+          "spectrogram": "assets/spectrograms/sample-crackling/nfe100.png?v=86f860ebdb2bf792",
+          "audio_sha256": "b28a1b839b2344b7ce6896fdccc32a89ca65b71eade32e0a7ca3dbde28f65a05",
+          "spectrogram_sha256": "86f860ebdb2bf792cd5ec920a7e2e9625cc3a41d687ad2de1838077f36d80dcb",
+          "source_sha256": "a2b25f6c29c7f37941cf82af489a5ec818a6b890704d62a933abeaf5735e9177",
+          "stoi": 0.6882902094811783,
+          "nfe": 100,
+          "label": "NFE 100 · STOI 0.688",
+          "matched": {
+            "audio": "assets/audio/sample-crackling/nfe100-rms-matched.wav?v=2d632dae7f3291a5",
+            "spectrogram": "assets/spectrograms/sample-crackling/nfe100-rms-matched.png?v=5272fd7a351794b5",
+            "audio_sha256": "2d632dae7f3291a554ab2d0950601ede03e8f25e69b35cb8c6cdc07a144bc021",
+            "spectrogram_sha256": "5272fd7a351794b5abd0f6444cf31292df373b577970c63e01e76d26258d32f3",
+            "gain_db": 12.08018057354044,
+            "source_rms_dbfs": -38.82239991216409,
+            "rms_dbfs": -26.7417300853379,
+            "rms": 0.046016490722536246,
+            "peak": 0.475433349609375
+          }
+        }
+      ],
+      "source_note": "Controlled synthetic test on one speech clip, not a benchmark. 660 crackles affect 54.2% of samples. Both clean speech and mixture were scaled together to avoid clipping. STOI is measured on raw audio before playback gain.",
+      "test": {
+        "snr_db": -10.000000009991197,
+        "event_count": 660,
+        "affected_fraction": 0.541984375,
+        "crackle_seed": 21030003,
+        "common_source_gain_db": -10.306141039671923,
+        "noise_seed": 1510001
+      },
+      "playback": {
+        "original_gain_db": -1.853234073267863,
+        "matched_safety_gain_db": 0.0
+      }
     }
-  ]
+  ],
+  "checkpoint_scope": "Default checkpoint for samples without a checkpoint override; per-sample checkpoints are shown in the interface."
 }
