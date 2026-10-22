@@ -70,7 +70,7 @@ h1, h2 { margin: 0; font-size: 20px; line-height: 1.35; font-weight: 600; letter
 .group-heading { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; margin: 0 0 13px; }
 .group-heading h3 { margin: 0; color: var(--muted); font-size: 11px; text-transform: uppercase; letter-spacing: .1em; font-weight: 650; }
 .group-heading span { color: var(--subtle); font-size: 11px; }
-.tracks-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; }
+.tracks-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
 .track { min-width: 0; }
 .track-label-row { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 7px; min-height: 25px; }
 .track h4 { margin: 0; font-size: 13px; font-weight: 600; }

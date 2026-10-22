@@ -324,7 +324,7 @@
 
   function validateManifest(data) {
     if (data.schema_version !== 1 || !Array.isArray(data.samples) || !data.samples.length) throw new Error("Unsupported results manifest.");
-    if (!data.checkpoint || data.nfes.join(",") !== "1,5,20,100") throw new Error("Results are incomplete.");
+    if (!data.checkpoint || data.nfes.join(",") !== "1,5,20") throw new Error("Results are incomplete.");
     for (const sample of data.samples) {
       if (!Number.isFinite(sample.duration_seconds) || sample.duration_seconds <= 0) throw new Error("Invalid sample duration.");
       if (!Array.isArray(sample.references) || !Array.isArray(sample.outputs)) throw new Error("Missing audio tracks.");
@@ -347,7 +347,7 @@
       validateManifest(data);
       const checkpoints = [...new Map(data.samples.map(sample => { const c = sample.checkpoint || data.checkpoint; return [c.sha256, c]; })).values()];
       const stepLabel = checkpoints.map(c => c.step.toLocaleString("en-US")).join(" / ");
-      document.querySelector(".section-helper").textContent = `${stepLabel}-update checkpoints · Labeled per example. Click a spectrogram to play or pause. Use the slider to seek.`;
+      document.querySelector(".section-helper").textContent = `${stepLabel}-update ${checkpoints.length === 1 ? `${checkpoints[0].weights} checkpoint` : "checkpoints"} · NFE ${data.nfes.join(", ")}. Click a spectrogram to play or pause. Use the slider to seek.`;
       const spectrum = data.spectrogram;
       const gainDb = data.playback?.common_gain_db;
       const gainLabel = Number.isFinite(gainDb)
